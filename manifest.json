@@ -1,0 +1,19 @@
+{
+    "required_api_version": "^2.0.0",
+    "name": "vs workspace open",
+    "description": "Extension Description",
+    "developer_name": "Barath Bheeman",
+    "icon": "images/vsw.png",
+    "options": {
+      "query_debounce": 0.1
+    },
+    "preferences": [
+      {
+        "id": "vs_kw",
+        "type": "keyword",
+        "name": "show vs-code workspaces",
+        "description": "Show all available vs code .code-workspace files",
+        "default_value": "vsw"
+      }
+    ]
+  }
