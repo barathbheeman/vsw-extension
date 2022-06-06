@@ -7,7 +7,6 @@ from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
-from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 
 import logging
@@ -27,13 +26,12 @@ class KeywordQueryEventListener(EventListener):
         homefolder = os.environ['HOME']
         workspace_files = glob.glob(homefolder + '/**/*.code-workspace', recursive=True)
         items = []
-        # ri = ExtensionResultItem if len(workspace_files) < 15 else
         for i in workspace_files:
             data = {'workspace': i}
             items.append(ExtensionResultItem(icon='images/visual-studio-code.png',
-                                             name=i.replace(homefolder, '')[1:],
-                                             description=i,
-                                             on_enter=ExtensionCustomAction(data)))
+                                            name=i.split('/')[-1],
+                                            description=i,
+                                            on_enter=ExtensionCustomAction(data)))
 
         return RenderResultListAction(items)
 
