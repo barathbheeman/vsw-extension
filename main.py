@@ -29,7 +29,7 @@ class KeywordQueryEventListener(EventListener):
         for i in workspace_files:
             data = {'workspace': i}
             items.append(ExtensionResultItem(icon='images/visual-studio-code.png',
-                                            name=i.split('/')[-1],
+                                            name=i.split('/')[-1].replace('.code-workspace', ''),
                                             description=i,
                                             on_enter=ExtensionCustomAction(data)))
 
